@@ -1,0 +1,55 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: url('img/img5.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center; /* Move container to the right */
+  margin: 0;
+  padding-right: 0px;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 420px;      /* Add this line for fixed width */
+  max-width: 90vw;   /* Optional: responsive on small screens */
+}
+
+#timer {
+font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 110px;
+  margin: 20px 0;
+  display: inline-block;
+  min-width: 250px; /* Adjust as needed for your font/size */
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.buttons button {
+  font-size: 20px;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ffffff00;
+  color: white;
+  transition: 0.2s;
+  border: 2px solid #ffffff;
+}
+
+.buttons button:hover {
+  background-color: #303f9f;
+}
