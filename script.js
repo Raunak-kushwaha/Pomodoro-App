@@ -13,16 +13,29 @@ function updateDisplay() {
   timerDisplay.textContent = `${minutes}:${seconds}`;
 }
 
+function updateButtons() {
+  startBtn.disabled = isRunning;
+  pauseBtn.disabled = !isRunning;
+  if (isRunning) {
+    startBtn.classList.add('active');
+  } else {
+    startBtn.classList.remove('active');
+  }
+}
+
 function startTimer() {
   if (isRunning) return;
   isRunning = true;
+  updateButtons();
   timer = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
       updateDisplay();
+      localStorage.setItem('pomodoroTimeLeft', timeLeft); // persist
     } else {
       clearInterval(timer);
       isRunning = false;
+      updateButtons();
     }
   }, 1000);
 }
@@ -30,6 +43,7 @@ function startTimer() {
 function pauseTimer() {
   clearInterval(timer);
   isRunning = false;
+  updateButtons();
 }
 
 function resetTimer() {
@@ -37,10 +51,20 @@ function resetTimer() {
   timeLeft = 25 * 60;
   updateDisplay();
   isRunning = false;
+  updateButtons();
+  localStorage.removeItem('pomodoroTimeLeft');
 }
 
+// Call updateButtons() after DOM loads and after each state change
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
-
 updateDisplay();
+updateButtons();
+
+// Restore timer from localStorage if available
+const saved = localStorage.getItem('pomodoroTimeLeft');
+if (saved !== null) {
+  timeLeft = parseInt(saved, 10);
+  updateDisplay();
+}

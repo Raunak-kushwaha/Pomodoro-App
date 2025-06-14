@@ -49,7 +49,14 @@ font-family: "Roboto", sans-serif;
   transition: 0.2s;
   border: 2px solid #ffffff;
 }
-
+.buttons button.active {
+  background-color: #43a047;
+  color: #fff;
+  box-shadow: 0 0 12px #43a04788;
+}
 .buttons button:hover {
-  background-color: #303f9f;
+  background-color: #4357a0;
+  color: #fff;
+  box-shadow: 0 0 8px #43a04788;
+  border-color: #43a047;
 }
